@@ -1,0 +1,11 @@
+# Composer
+/vendor/
+/.composer/
+composer.lock
+
+# PHPUnit
+/phpunit.xml
+.phpunit.result.cache
+
+# Bash History
+.bash_history

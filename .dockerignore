@@ -1,0 +1,10 @@
+.git
+.gitignore
+.env
+.env.example
+README.md
+docker
+vendor
+tests
+.phpunit.result.cache
+composer.lock 

@@ -1,0 +1,26 @@
+{
+    "name": "gustavo/acme-widget-co",
+    "description": "Acme Widget Co Sales System",
+    "type": "project",
+    "require": {
+        "php": "^8.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "AcmeWidgetCo\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AcmeWidgetCo\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "phpstan": "phpstan analyse src tests"
+    }
+} 
