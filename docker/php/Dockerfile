@@ -3,9 +3,6 @@ FROM php:8.3-fpm-bullseye
 # Install system dependencies and security updates
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     git \
-    curl \
-    zip \
-    unzip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
