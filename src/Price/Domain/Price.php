@@ -33,6 +33,10 @@ final class Price
      */
     public static function fromFloat(float $amount): self
     {
+        if ($amount < 0) {
+            throw new \InvalidArgumentException('Price cannot be negative');
+        }
+
         return new self((int) round($amount * 100));
     }
 
@@ -44,6 +48,16 @@ final class Price
     public function toFloat(): float
     {
         return $this->amount / 100;
+    }
+
+    /**
+     * Converts the internal cents value to a float in dollars.
+     *
+     * @return int
+     */
+    public function toInt(): int
+    {
+        return $this->amount;
     }
 
     /**

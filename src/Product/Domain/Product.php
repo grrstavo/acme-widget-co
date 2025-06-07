@@ -70,16 +70,4 @@ final class Product
     {
         return $this->price;
     }
-
-    /**
-     * Compares this Product with another for equality.
-     * Products are considered equal if they have the same code.
-     *
-     * @param self $other
-     * @return bool
-     */
-    public function equals(self $other): bool
-    {
-        return $this->code->equals($other->code);
-    }
-} 
+}

@@ -55,10 +55,17 @@ final class Basket
     }
 
     /**
-     * Calculates the total cost of the basket including:
-     * - Subtotal of all products
-     * - Discounts from special offers
-     * - Delivery costs
+     * Empties the basket.
+     *
+     * @return void
+     */
+    public function empty(): void
+    {
+        $this->items = [];
+    }
+
+    /**
+     * Calculates the total cost of the basket including delivery costs and special offers.
      *
      * @return float
      */
@@ -78,7 +85,7 @@ final class Basket
      *
      * @return Price
      */
-    private function calculateSubtotal(): Price
+    public function calculateSubtotal(): Price
     {
         $total = Price::fromFloat(0.0);
 

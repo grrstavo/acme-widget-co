@@ -27,12 +27,14 @@ final class RedWidgetOffer implements OfferInterface
     public function __invoke(array $items, ProductCatalog $catalog): Price
     {
         $redWidgetQuantity = $items[self::RED_WIDGET_CODE] ?? 0;
+
         if ($redWidgetQuantity < 2) {
             return Price::fromFloat(0.0);
         }
 
         $redWidget = $catalog->findByCode(self::RED_WIDGET_CODE);
-        if ($redWidget === null) {
+
+        if (!$redWidget) {
             return Price::fromFloat(0.0);
         }
 
