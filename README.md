@@ -74,6 +74,15 @@ src/
 
 ## Usage
 
+The application runs on port 8080 and demonstrates the following use cases:
+
+1. Basket 1: B01, G01
+2. Basket 2: R01, R01
+3. Basket 3: R01, G01
+4. Basket 4: B01, B01, R01, R01, R01
+
+Access the application at `http://localhost:8080` to see the results.
+
 ```php
 $basket = new Basket($catalog, $deliveryRules, $offers);
 $basket->add('R01'); // Red Widget
@@ -83,12 +92,36 @@ $total = $basket->total();
 
 ## Development
 
+### Docker Commands
+
+```bash
+# Start the development environment
+docker-compose up -d
+
+# Stop the development environment
+docker-compose down
+
+# Rebuild containers
+docker-compose build
+
+# Run composer commands
+docker-compose exec app composer "${@:2}"
+
+# Run tests
+docker-compose exec app composer test
+
+# Run static analysis
+docker-compose exec app composer phpstan
+
+# Access container shell
+docker-compose exec app bash
+```
+
+### Local Development
+
 ```bash
 # Install dependencies
 composer install
-
-# Start development environment
-docker-compose up -d
 
 # Run tests
 composer test
