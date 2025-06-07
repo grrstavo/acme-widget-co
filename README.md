@@ -161,10 +161,7 @@ $basket->add('B01'); // Blue Widget
 // Get the total
 $total = $basket->total();
 printf("Basket 5: $%.2f\n", $total);
-```
 
-Or you can use the `printBasket` function for a more detailed output:
-
-```php
+//Or you can use the `printBasket` function for a more detailed output:
 printBasket($basket, $catalog);
 ```
