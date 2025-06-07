@@ -12,6 +12,67 @@ A simple e-commerce basket system that calculates totals including delivery cost
 - Unit and integration tests with PHPUnit
 - Static analysis with PHPStan
 
+## Installation
+
+### Prerequisites
+
+- Docker and Docker Compose
+- Git
+- PHP 8.3 (for local development)
+
+### Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/grrstavo/acme-widget-co.git
+   cd acme-widget-co
+   ```
+
+2. Start the development environment:
+   ```bash
+   docker-compose up -d
+   ```
+
+3. Install dependencies:
+   ```bash
+   docker-compose exec app composer install
+   ```
+
+4. Verify the installation:
+   - Access the application at `http://localhost:8080`
+   - Run the test suite: `docker-compose exec app composer test`
+
+## Testing
+
+### Unit Tests
+
+Run the unit test suite:
+```bash
+# Using Docker
+docker-compose exec app composer test
+
+# Local development
+composer test
+```
+
+The unit tests cover:
+- Individual components in isolation
+- Value objects (Price, ProductCode)
+- Delivery rules
+- Special offers
+- Basket calculations
+
+### Static Analysis
+
+Run PHPStan for static analysis:
+```bash
+# Using Docker
+docker-compose exec app composer phpstan
+
+# Local development
+composer phpstan
+```
+
 ## Technical Stack
 
 - PHP 8.3
@@ -104,9 +165,6 @@ docker-compose down
 # Rebuild containers
 docker-compose build
 
-# Run composer commands
-docker-compose exec app composer "${@:2}"
-
 # Run tests
 docker-compose exec app composer test
 
@@ -125,7 +183,4 @@ composer install
 
 # Run tests
 composer test
-
-# Run with coverage
-composer test-coverage
 ```
