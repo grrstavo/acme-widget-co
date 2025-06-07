@@ -145,9 +145,26 @@ The application runs on port 8080 and demonstrates the following use cases:
 
 Access the application at `http://localhost:8080` to see the results.
 
+### Adding Test Cases
+
+You can add your own test cases by modifying the `public/index.php` file. Here's an example of how to add a new test case:
+
 ```php
+// Create a new basket
 $basket = new Basket($catalog, $deliveryRules, $offers);
+
+// Add products to the basket
 $basket->add('R01'); // Red Widget
 $basket->add('G01'); // Green Widget
+$basket->add('B01'); // Blue Widget
+
+// Get the total
 $total = $basket->total();
+printf("Basket 5: $%.2f\n", $total);
+```
+
+Or you can use the `printBasket` function for a more detailed output:
+
+```php
+printBasket($basket, $catalog);
 ```
