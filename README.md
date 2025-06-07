@@ -112,12 +112,13 @@ src/
 
 ## Design Patterns
 
+- **Domain-Driven Design**: Bounded contexts, value objects, domain entities, and services with ubiquitous language
 - **Strategy Pattern**: For interchangeable delivery rules and offers
 - **Composite Pattern**: For combining multiple rules and offers
 - **Value Objects**: For prices and product codes
 - **Dependency Injection**: For clean architecture
 
-## Assumptions
+## Business Rules
 
 1. **Pricing**:
    - Prices stored in pence (integers)
@@ -149,38 +150,4 @@ $basket = new Basket($catalog, $deliveryRules, $offers);
 $basket->add('R01'); // Red Widget
 $basket->add('G01'); // Green Widget
 $total = $basket->total();
-```
-
-## Development
-
-### Docker Commands
-
-```bash
-# Start the development environment
-docker-compose up -d
-
-# Stop the development environment
-docker-compose down
-
-# Rebuild containers
-docker-compose build
-
-# Run tests
-docker-compose exec app composer test
-
-# Run static analysis
-docker-compose exec app composer phpstan
-
-# Access container shell
-docker-compose exec app bash
-```
-
-### Local Development
-
-```bash
-# Install dependencies
-composer install
-
-# Run tests
-composer test
 ```
