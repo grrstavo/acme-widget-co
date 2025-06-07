@@ -55,13 +55,24 @@ final class Basket
     }
 
     /**
-     * Empties the basket.
+     * Calculates the discount for the basket.
      *
-     * @return void
+     * @return Price
      */
-    public function empty(): void
+    public function calculateDiscount(): Price
     {
-        $this->items = [];
+        return ($this->offer)($this->items, $this->catalog);
+    }
+
+    /**
+     * Calculates the delivery cost for the basket.
+     *
+     * @param Price $subtotal
+     * @return Price
+     */
+    public function calculateDelivery(Price $subtotal): Price
+    {
+        return ($this->deliveryRule)($subtotal);
     }
 
     /**
@@ -72,10 +83,11 @@ final class Basket
     public function total(): float
     {
         $subtotal = $this->calculateSubtotal();
-        $discount = ($this->offer)($this->items, $this->catalog);
+        $discount = $this->calculateDiscount();
+
         $subtotal = $subtotal->subtract($discount);
 
-        $delivery = ($this->deliveryRule)($subtotal);
+        $delivery = $this->calculateDelivery($subtotal);
 
         return $subtotal->toFloat() + $delivery->toFloat();
     }

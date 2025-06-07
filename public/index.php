@@ -35,7 +35,7 @@ $offers = new CompositeOffer([
 // Function to print basket contents and total
 function printBasket(Basket $basket, ProductCatalog $catalog): void
 {
-    echo "Basket Contents:<br>";
+    echo "Basket Items:<br>";
 
     foreach ($basket->getItems() as $code => $quantity) {
         $product = $catalog->findByCode($code);
@@ -49,6 +49,14 @@ function printBasket(Basket $basket, ProductCatalog $catalog): void
         );
     }
 
+    $subtotal = $basket->calculateSubtotal();
+    $discount = $basket->calculateDiscount();
+    $subtotal = $subtotal->subtract($discount);
+    $delivery = $basket->calculateDelivery($subtotal);
+
+    echo sprintf("<br>Discount: -$%.2f", $basket->calculateDiscount()->toFloat());
+    echo sprintf("<br>Subtotal: $%.2f", $subtotal->toFloat());
+    echo sprintf("<br>Delivery: $%.2f", $delivery->toFloat());
     echo sprintf("<br>Total: $%.2f<br><br>", $basket->total());
 }
 
